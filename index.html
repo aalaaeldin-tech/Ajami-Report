@@ -1,1 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تقرير المصحف المرتل - أحمد بن علي العجمي</title>
 
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", Tahoma, Arial, sans-serif;
+      background: #07111f;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .slide {
+      height: 100vh;
+      width: 100vw;
+      display: none;
+      padding: 70px;
+      box-sizing: border-box;
+      background: radial-gradient(circle at top, #12304f, #07111f 65%);
+      animation: fade 0.8s ease;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 58px;
+      color: #d4af37;
+      margin: 0 0 20px;
+    }
+
+    h2 {
+      font-size: 40px;
+      color: #d4af37;
+      margin-bottom: 25px;
+    }
+
+    p, li, a {
+      font-size: 25px;
+      line-height: 1.9;
+    }
+
+    a {
+      color: #9fd3ff;
+      word-break: break-all;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li::before {
+      content: "✓ ";
+      color: #d4af37;
+      font-weight: bold;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(212,175,55,0.45);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      animation: up 0.8s ease;
+    }
+
+    .card h3 {
+      color: #d4af37;
+      font-size: 30px;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 25px;
+      left: 40px;
+      font-size: 18px;
+      color: #aaa;
+    }
+
+    .controls {
+      position: fixed;
+      bottom: 25px;
+      right: 40px;
+    }
+
+    button {
+      background: #d4af37;
+      color: #07111f;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #f1cd5c;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes up {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .slide {
+        padding: 35px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      p, li, a {
+        font-size: 19px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="slide active">
+    <h1>المصحف المرتل</h1>
+    <h2>فضيلة الشيخ أحمد بن علي العجمي</h2>
+    <p>تقرير حول إطلاق المحتوى على المنصات السمعية الرقمية</p>
+  </section>
+
+  <section class="slide">
+    <h2>مقدمة</h2>
+    <p>
+      تم بحمد الله رفع المصحف المرتل الخاص بفضيلة الشيخ
+      <strong>أحمد بن علي العجمي</strong>
+      على عدد من أبرز المنصات السمعية العالمية، بهدف إتاحة المحتوى للمستمعين حول العالم من خلال القنوات الرسمية المعتمدة.
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>الحسابات الرسمية على المنصات</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Apple Music</h3>
+        <a href="https://music.apple.com/eg/artist/ahmad-bin-ali-al-ajmi/1896521543" target="_blank">
+          فتح الحساب
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Spotify</h3>
+        <a href="https://open.spotify.com/artist/2AbS8v2WOpcSMTLfDjMyMX" target="_blank">
+          فتح الحساب
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Anghami</h3>
+        <a href="https://play.anghami.com/artist/28425904" target="_blank">
+          فتح الحساب
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>التحدي الذي تم اكتشافه</h2>
+    <p>
+      بعد إطلاق المحتوى على المنصات الرقمية، تبين وجود محتوى تم رفعه سابقًا من قبل جهات وأفراد آخرين.
+    </p>
+
+    <ul>
+      <li>استخدام اسم الشيخ دون تصريح.</li>
+      <li>رفع تلاوات بصوت الشيخ تحت أسماء مختلفة.</li>
+      <li>نشر سور بصوت الشيخ منسوبة إلى شيوخ آخرين.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>الإجراءات المتخذة</h2>
+    <ul>
+      <li>حصر وتجميع جميع المحتويات المخالفة.</li>
+      <li>توثيق الروابط والحسابات التي قامت برفع المحتوى.</li>
+      <li>تحديد الشركات أو الجهات المسؤولة عن الرفع.</li>
+      <li>التواصل الرسمي مع هذه الجهات لمعالجة المشكلة.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>الوضع الحالي</h2>
+    <ul>
+      <li>تم إرسال الطلبات الرسمية للجهات المعنية.</li>
+      <li>بعض الحالات لا تزال قيد المراجعة والمعالجة.</li>
+      <li>تتم المتابعة بشكل مستمر حتى تصحيح جميع المحتويات غير المصرح بها.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>الخاتمة</h2>
+    <p>
+      نواصل العمل على حماية المحتوى الرسمي للشيخ، وتوحيد الهوية الرقمية الخاصة به عبر المنصات، وضمان وصول المستمعين إلى المصادر الرسمية المعتمدة.
+    </p>
+    <h1>شكرًا لكم</h1>
+  </section>
+
+  <div class="controls">
+    <button onclick="prevSlide()">السابق</button>
+    <button onclick="nextSlide()">التالي</button>
+  </div>
+
+  <div class="footer">
+    استخدم الأسهم أو الأزرار للتنقل
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[index].classList.add("active");
+    }
+
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
+
+    function prevSlide() {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    }
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "ArrowRight") prevSlide();
+      if (e.key === "ArrowLeft") nextSlide();
+    });
+  </script>
+
+</body>
+</html>
