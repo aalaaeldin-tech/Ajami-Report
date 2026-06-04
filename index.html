@@ -6,143 +6,348 @@
   <title>تقرير المصحف المرتل - أحمد بن علي العجمي</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: "Cairo", Tahoma, Arial, sans-serif;
       background: #07111f;
       color: #fff;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7, 17, 31, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: #d4af37;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      font-size: 16px;
+    }
+
+    .nav-links a {
+      color: #e8e8e8;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #d4af37;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(212,175,55,0.22), transparent 28%),
+        radial-gradient(circle at top left, rgba(32,93,140,0.45), transparent 32%),
+        linear-gradient(135deg, #07111f, #0c2138);
       overflow: hidden;
     }
 
-    .slide {
-      height: 100vh;
-      width: 100vw;
-      display: none;
-      padding: 70px;
-      box-sizing: border-box;
-      background: radial-gradient(circle at top, #12304f, #07111f 65%);
-      animation: fade 0.8s ease;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
     }
 
-    .slide.active {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .badge {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1px solid rgba(212,175,55,0.55);
+      border-radius: 50px;
+      color: #d4af37;
+      background: rgba(212,175,55,0.08);
+      margin-bottom: 20px;
+      font-size: 16px;
     }
 
     h1 {
-      font-size: 58px;
+      font-size: clamp(40px, 6vw, 72px);
+      color: #d4af37;
+      margin: 0 0 15px;
+      line-height: 1.25;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 44px);
       color: #d4af37;
       margin: 0 0 20px;
     }
 
-    h2 {
-      font-size: 40px;
+    h3 {
       color: #d4af37;
-      margin-bottom: 25px;
-    }
-
-    p, li, a {
+      margin: 0 0 12px;
       font-size: 25px;
-      line-height: 1.9;
     }
 
-    a {
-      color: #9fd3ff;
-      word-break: break-all;
+    p, li {
+      font-size: clamp(18px, 2vw, 23px);
+      color: #f2f2f2;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
+    .hero p {
+      max-width: 750px;
     }
 
-    li::before {
-      content: "✓ ";
-      color: #d4af37;
-      font-weight: bold;
+    .hero-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(212,175,55,0.35);
+      border-radius: 28px;
+      padding: 35px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+      text-align: center;
     }
 
-    .cards {
+    .hero-icon {
+      width: 140px;
+      height: 140px;
+      margin: auto;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(212,175,55,0.12);
+      border: 1px solid rgba(212,175,55,0.45);
+      font-size: 60px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section.alt {
+      background: rgba(255,255,255,0.035);
+    }
+
+    .section-title {
+      max-width: 850px;
+      margin-bottom: 35px;
+    }
+
+    .platforms {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 25px;
-      margin-top: 30px;
+      margin-top: 35px;
     }
 
-    .card {
+    .platform-card {
       background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(212,175,55,0.45);
-      border-radius: 20px;
-      padding: 30px;
+      border: 1px solid rgba(212,175,55,0.35);
+      border-radius: 24px;
+      padding: 32px;
       text-align: center;
-      animation: up 0.8s ease;
+      transition: 0.3s;
     }
 
-    .card h3 {
-      color: #d4af37;
-      font-size: 30px;
+    .platform-card:hover {
+      transform: translateY(-8px);
+      border-color: #d4af37;
+      background: rgba(255,255,255,0.12);
     }
 
-    .footer {
-      position: fixed;
-      bottom: 25px;
-      left: 40px;
-      font-size: 18px;
-      color: #aaa;
+    .platform-logo {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      filter: brightness(0) invert(1);
     }
 
-    .controls {
-      position: fixed;
-      bottom: 25px;
-      right: 40px;
+    .platform-card.spotify .platform-logo {
+      filter: none;
     }
 
-    button {
+    .platform-card a {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 10px 20px;
+      border-radius: 50px;
       background: #d4af37;
       color: #07111f;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-size: 18px;
-      cursor: pointer;
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .list {
+      display: grid;
+      gap: 18px;
+      padding: 0;
+      margin: 30px 0 0;
+      list-style: none;
+    }
+
+    .list li {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 18px;
+      padding: 18px 24px;
+    }
+
+    .list li::before {
+      content: "✓";
+      color: #d4af37;
+      font-weight: 900;
       margin-left: 10px;
-      font-weight: bold;
     }
 
-    button:hover {
-      background: #f1cd5c;
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 35px;
     }
 
-    @keyframes fade {
-      from { opacity: 0; transform: scale(0.97); }
-      to { opacity: 1; transform: scale(1); }
+    .step {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 22px;
+      padding: 25px;
     }
 
-    @keyframes up {
-      from { opacity: 0; transform: translateY(25px); }
-      to { opacity: 1; transform: translateY(0); }
+    .number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #d4af37;
+      color: #07111f;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 15px;
     }
 
-    @media (max-width: 768px) {
-      .slide {
-        padding: 35px;
-      }
+    .status-box {
+      background: linear-gradient(135deg, rgba(212,175,55,0.14), rgba(255,255,255,0.06));
+      border: 1px solid rgba(212,175,55,0.35);
+      border-radius: 28px;
+      padding: 35px;
+    }
 
-      h1 {
-        font-size: 36px;
-      }
+    .cta {
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(212,175,55,0.18), transparent 45%),
+        #07111f;
+    }
 
-      h2 {
-        font-size: 30px;
-      }
+    .cta h2 {
+      font-size: clamp(36px, 5vw, 60px);
+    }
 
-      p, li, a {
-        font-size: 19px;
-      }
+    footer {
+      padding: 28px 0;
+      text-align: center;
+      color: #aaa;
+      border-top: 1px solid rgba(212,175,55,0.2);
+      font-size: 15px;
+    }
 
-      .cards {
+    .fade-up {
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .platforms,
+      .steps {
         grid-template-columns: 1fr;
+      }
+
+      nav {
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 70px 0;
+      }
+
+      .hero-card {
+        padding: 25px;
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand {
+        font-size: 18px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-icon {
+        width: 110px;
+        height: 110px;
+        font-size: 46px;
+      }
+
+      .platform-card,
+      .step,
+      .status-box {
+        padding: 22px;
       }
     }
   </style>
@@ -150,121 +355,192 @@
 
 <body>
 
-  <section class="slide active">
-    <h1>المصحف المرتل</h1>
-    <h2>فضيلة الشيخ أحمد بن علي العجمي</h2>
-    <p>تقرير حول إطلاق المحتوى على المنصات السمعية الرقمية</p>
-  </section>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">أحمد بن علي العجمي</div>
 
-  <section class="slide">
-    <h2>مقدمة</h2>
-    <p>
-      تم بحمد الله رفع المصحف المرتل الخاص بفضيلة الشيخ
-      <strong>أحمد بن علي العجمي</strong>
-      على عدد من أبرز المنصات السمعية العالمية، بهدف إتاحة المحتوى للمستمعين حول العالم من خلال القنوات الرسمية المعتمدة.
-    </p>
-  </section>
-
-  <section class="slide">
-    <h2>الحسابات الرسمية على المنصات</h2>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Apple Music</h3>
-        <a href="https://music.apple.com/eg/artist/ahmad-bin-ali-al-ajmi/1896521543" target="_blank">
-          فتح الحساب
-        </a>
-      </div>
-
-      <div class="card">
-        <h3>Spotify</h3>
-        <a href="https://open.spotify.com/artist/2AbS8v2WOpcSMTLfDjMyMX" target="_blank">
-          فتح الحساب
-        </a>
-      </div>
-
-      <div class="card">
-        <h3>Anghami</h3>
-        <a href="https://play.anghami.com/artist/28425904" target="_blank">
-          فتح الحساب
-        </a>
-      </div>
+        <div class="nav-links">
+          <a href="#intro">مقدمة</a>
+          <a href="#platforms">المنصات</a>
+          <a href="#challenge">التحدي</a>
+          <a href="#actions">الإجراءات</a>
+          <a href="#status">الوضع الحالي</a>
+        </div>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <section class="slide">
-    <h2>التحدي الذي تم اكتشافه</h2>
-    <p>
-      بعد إطلاق المحتوى على المنصات الرقمية، تبين وجود محتوى تم رفعه سابقًا من قبل جهات وأفراد آخرين.
-    </p>
+  <main>
 
-    <ul>
-      <li>استخدام اسم الشيخ دون تصريح.</li>
-      <li>رفع تلاوات بصوت الشيخ تحت أسماء مختلفة.</li>
-      <li>نشر سور بصوت الشيخ منسوبة إلى شيوخ آخرين.</li>
-    </ul>
-  </section>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="fade-up">
+            <span class="badge">تقرير المنصات السمعية الرقمية</span>
+            <h1>المصحف المرتل</h1>
+            <h2>فضيلة الشيخ أحمد بن علي العجمي</h2>
+            <p>
+              تقرير حول إطلاق المصحف المرتل على المنصات السمعية الرسمية،
+              ومتابعة المحتويات غير المصرح بها المنتشرة على بعض المنصات.
+            </p>
+          </div>
 
-  <section class="slide">
-    <h2>الإجراءات المتخذة</h2>
-    <ul>
-      <li>حصر وتجميع جميع المحتويات المخالفة.</li>
-      <li>توثيق الروابط والحسابات التي قامت برفع المحتوى.</li>
-      <li>تحديد الشركات أو الجهات المسؤولة عن الرفع.</li>
-      <li>التواصل الرسمي مع هذه الجهات لمعالجة المشكلة.</li>
-    </ul>
-  </section>
+          <div class="hero-card fade-up">
+            <div class="hero-icon">﷽</div>
+            <h3>المصدر الرسمي</h3>
+            <p>
+              نعمل على توحيد الهوية الرقمية للمحتوى وضمان وصول المستمعين
+              إلى النسخ الرسمية المعتمدة.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="slide">
-    <h2>الوضع الحالي</h2>
-    <ul>
-      <li>تم إرسال الطلبات الرسمية للجهات المعنية.</li>
-      <li>بعض الحالات لا تزال قيد المراجعة والمعالجة.</li>
-      <li>تتم المتابعة بشكل مستمر حتى تصحيح جميع المحتويات غير المصرح بها.</li>
-    </ul>
-  </section>
+    <section class="section" id="intro">
+      <div class="container">
+        <div class="section-title">
+          <h2>مقدمة</h2>
+          <p>
+            تم بحمد الله رفع المصحف المرتل الخاص بفضيلة الشيخ
+            <strong>أحمد بن علي العجمي</strong>
+            على عدد من أبرز المنصات السمعية العالمية، بهدف إتاحة المحتوى
+            للمستمعين حول العالم من خلال القنوات الرسمية المعتمدة.
+          </p>
+        </div>
+      </div>
+    </section>
 
-  <section class="slide">
-    <h2>الخاتمة</h2>
-    <p>
-      نواصل العمل على حماية المحتوى الرسمي للشيخ، وتوحيد الهوية الرقمية الخاصة به عبر المنصات، وضمان وصول المستمعين إلى المصادر الرسمية المعتمدة.
-    </p>
-    <h1>شكرًا لكم</h1>
-  </section>
+    <section class="section alt" id="platforms">
+      <div class="container">
+        <div class="section-title">
+          <h2>الحسابات الرسمية على المنصات</h2>
+          <p>
+            يمكن الوصول إلى ملفات الشيخ الرسمية عبر المنصات الرئيسية التالية:
+          </p>
+        </div>
 
-  <div class="controls">
-    <button onclick="prevSlide()">السابق</button>
-    <button onclick="nextSlide()">التالي</button>
-  </div>
+        <div class="platforms">
 
-  <div class="footer">
-    استخدم الأسهم أو الأزرار للتنقل
-  </div>
+          <div class="platform-card">
+            <img class="platform-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/applemusic.svg" alt="Apple Music Logo">
+            <h3>Apple Music</h3>
+            <p>الملف الرسمي على Apple Music</p>
+            <a href="https://music.apple.com/eg/artist/ahmad-bin-ali-al-ajmi/1896521543" target="_blank">
+              فتح الحساب
+            </a>
+          </div>
 
-  <script>
-    const slides = document.querySelectorAll(".slide");
-    let current = 0;
+          <div class="platform-card spotify">
+            <img class="platform-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/spotify.svg" alt="Spotify Logo">
+            <h3>Spotify</h3>
+            <p>الملف الرسمي على Spotify</p>
+            <a href="https://open.spotify.com/artist/2AbS8v2WOpcSMTLfDjMyMX" target="_blank">
+              فتح الحساب
+            </a>
+          </div>
 
-    function showSlide(index) {
-      slides.forEach(slide => slide.classList.remove("active"));
-      slides[index].classList.add("active");
-    }
+          <div class="platform-card">
+            <img class="platform-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/anghami.svg" alt="Anghami Logo">
+            <h3>Anghami</h3>
+            <p>الملف الرسمي على Anghami</p>
+            <a href="https://play.anghami.com/artist/28425904" target="_blank">
+              فتح الحساب
+            </a>
+          </div>
 
-    function nextSlide() {
-      current = (current + 1) % slides.length;
-      showSlide(current);
-    }
+        </div>
+      </div>
+    </section>
 
-    function prevSlide() {
-      current = (current - 1 + slides.length) % slides.length;
-      showSlide(current);
-    }
+    <section class="section" id="challenge">
+      <div class="container">
+        <div class="section-title">
+          <h2>التحدي الذي تم اكتشافه</h2>
+          <p>
+            بعد إطلاق المحتوى على المنصات الرقمية، تبين وجود محتوى تم رفعه سابقًا
+            من قبل جهات وأفراد آخرين.
+          </p>
+        </div>
 
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "ArrowRight") prevSlide();
-      if (e.key === "ArrowLeft") nextSlide();
-    });
-  </script>
+        <ul class="list">
+          <li>استخدام اسم الشيخ دون تصريح.</li>
+          <li>رفع تلاوات بصوت الشيخ تحت أسماء مختلفة.</li>
+          <li>نشر سور بصوت الشيخ منسوبة إلى شيوخ آخرين.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section alt" id="actions">
+      <div class="container">
+        <div class="section-title">
+          <h2>الإجراءات المتخذة</h2>
+          <p>
+            تم التعامل مع المشكلة من خلال خطوات منظمة لحصر المحتوى ومتابعة الجهات المسؤولة.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="number">1</div>
+            <h3>الحصر</h3>
+            <p>حصر وتجميع جميع المحتويات المخالفة على المنصات.</p>
+          </div>
+
+          <div class="step">
+            <div class="number">2</div>
+            <h3>التوثيق</h3>
+            <p>توثيق الروابط والحسابات التي قامت برفع المحتوى.</p>
+          </div>
+
+          <div class="step">
+            <div class="number">3</div>
+            <h3>التحديد</h3>
+            <p>تحديد الشركات أو الجهات المسؤولة عن الرفع.</p>
+          </div>
+
+          <div class="step">
+            <div class="number">4</div>
+            <h3>المتابعة</h3>
+            <p>التواصل الرسمي مع الجهات لمعالجة المشكلة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="status">
+      <div class="container">
+        <div class="status-box">
+          <h2>الوضع الحالي</h2>
+
+          <ul class="list">
+            <li>تم إرسال الطلبات الرسمية للجهات المعنية.</li>
+            <li>بعض الحالات لا تزال قيد المراجعة والمعالجة.</li>
+            <li>تتم المتابعة بشكل مستمر حتى تصحيح جميع المحتويات غير المصرح بها.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container">
+        <h2>الخاتمة</h2>
+        <p>
+          نواصل العمل على حماية المحتوى الرسمي للشيخ، وتوحيد الهوية الرقمية الخاصة به عبر المنصات،
+          وضمان وصول المستمعين إلى المصادر الرسمية المعتمدة.
+        </p>
+        <h2>شكرًا لكم</h2>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © تقرير المصحف المرتل - فضيلة الشيخ أحمد بن علي العجمي
+    </div>
+  </footer>
 
 </body>
 </html>
