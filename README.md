@@ -326,7 +326,7 @@ Enable smooth scrolling.
 
 # Footer
 
-© المصحف المرتل - فضيلة الشيخ أحمد بن علي العجمي
+© Rawafid Al Marifah
 
 ---
 
